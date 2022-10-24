@@ -37,7 +37,7 @@ const Register = () => {
                     <Form.Control name='password' type="password" placeholder="Password" required />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Register
                 </Button>
             </Form>
             <Form.Label>If you hav'nt account!<Link to='/login'>Login</Link></Form.Label>

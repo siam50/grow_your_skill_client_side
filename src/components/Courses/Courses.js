@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Courses = () => {
+
+    const { user } = useContext(AuthContext);
     return (
         <div>
-            <h3>Courses pages</h3>
+            <h3>{user?.displayName}</h3>
         </div>
     );
 };

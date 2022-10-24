@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -8,6 +8,11 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/skill.png';
 
 const Header = () => {
+    const [mood, setMood] = useState(true);
+
+    const handleMood = () => {
+        setMood(!mood);
+    }
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -29,6 +34,11 @@ const Header = () => {
                             <Link className='me-lg-3 text-decoration-none text-light' to='/courses'>Courses</Link>
                             <Link className='me-lg-3 text-decoration-none text-light' to='/courses'>FAQ</Link>
                             <Link className='me-lg-3 text-decoration-none text-light' to='/blog'>Blog</Link>
+                            {
+                                mood ?
+                                    <Button onClick={handleMood} variant="light">Light mood</Button>
+                                    : <Button onClick={handleMood} variant="dark">Dark mood</Button>
+                            }
                         </Nav>
                         <Nav>
                             <Link to='/login'><Button variant="primary">Login</Button></Link>
