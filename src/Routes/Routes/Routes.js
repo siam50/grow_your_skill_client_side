@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Checkout from "../../components/Checkout/Checkout";
 import CourseDetails from "../../components/CourseDetails/CourseDetails";
 import Courses from "../../components/Courses/Courses";
 import Home from "../../components/Home/Home";
@@ -23,6 +24,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses/:id',
                 element: <CourseDetails></CourseDetails>,
+                loader: ({ params }) => fetch(`https://grow-your-skill-server.vercel.app/courses/${params.id}`)
+            },
+            {
+                path: '/checkout/:id',
+                element: <Checkout></Checkout>,
                 loader: ({ params }) => fetch(`https://grow-your-skill-server.vercel.app/courses/${params.id}`)
             },
             {

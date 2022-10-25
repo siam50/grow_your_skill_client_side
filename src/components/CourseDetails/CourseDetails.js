@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
@@ -21,7 +21,7 @@ const CourseDetails = () => {
                             <Card.Text>
                                 {description}
                             </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Link to={`/checkout/${id}`}><Button variant="primary">Get premium access</Button></Link>
                         </Card.Body>
                     </Card>
                 </div>
