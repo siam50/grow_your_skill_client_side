@@ -5,12 +5,13 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,6 +29,15 @@ const Login = () => {
 
     const handleGoogle = () => {
         googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => console.error(error))
+    };
+
+    const handleGithub = () => {
+        githubSignIn(githubProvider)
             .then(result => {
                 const user = result.user
                 console.log(user)
@@ -54,7 +64,7 @@ const Login = () => {
             </Form>
             <div className='my-3'>
                 <Button onClick={handleGoogle} className='me-3' variant="outline-dark"><FaGoogle></FaGoogle> Google</Button>
-                <Button variant="outline-dark"><FaGithub></FaGithub> Github</Button>
+                <Button onClick={handleGithub} variant="outline-dark"><FaGithub></FaGithub> Github</Button>
             </div>
             <Form.Label>If you hav'nt account!<Link to='/register'>Register</Link></Form.Label>
         </Container>

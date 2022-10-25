@@ -19,6 +19,10 @@ const AuthProvider = ({ children }) => {
 
     const googleSignIn = (provider) => {
         return signInWithPopup(auth, provider);
+    };
+
+    const githubSignIn = (provider) => {
+        return signInWithPopup(auth, provider);
     }
 
     const logOut = () => {
@@ -32,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
         return () => unsubscribe();
     }, [])
-    const authInfo = { user, createUser, signIn, googleSignIn, logOut }
+    const authInfo = { user, createUser, signIn, googleSignIn, githubSignIn, logOut }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
