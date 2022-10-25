@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/skill.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const Header = () => {
     const [mood, setMood] = useState(true);
@@ -50,15 +52,20 @@ const Header = () => {
                             }
                         </Nav>
                         <Nav>
+                            <Nav.Link className='p-lg-0' eventKey={2} href="#memes">
+                                {user?.photoURL ?
+                                    <Tippy content={user.displayName}>
+                                        <Image className='me-lg-3' roundedCircle style={{ height: '40px' }} src={user?.photoURL}></Image>
+                                    </Tippy>
+                                    : <FaUser></FaUser>
+                                }
+                            </Nav.Link>
                             {
                                 user?.uid ?
                                     <Button onClick={handleLogOut} variant="light">Logout</Button>
                                     : <Link to='/login'><Button variant="primary">Login</Button></Link>
 
                             }
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
-                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

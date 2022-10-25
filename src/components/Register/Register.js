@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserInfo } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,13 +17,25 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoURL, email, password)
+        // console.log(name, photoURL, email, password)
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                handleUserInfo(name, photoURL);
+                navigate('/');
             })
+            .catch(error => console.error(error))
+    }
+
+    const handleUserInfo = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserInfo(profile)
+            .then(() => { })
             .catch(error => console.error(error))
     }
 
