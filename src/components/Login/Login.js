@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaGoogle, IconName } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
+    const { signIn, googleSignIn } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -13,6 +18,21 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handleGoogle = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -33,7 +53,7 @@ const Login = () => {
                 </Button>
             </Form>
             <div className='my-3'>
-                <Button className='me-3' variant="outline-dark"><FaGoogle></FaGoogle> Google</Button>
+                <Button onClick={handleGoogle} className='me-3' variant="outline-dark"><FaGoogle></FaGoogle> Google</Button>
                 <Button variant="outline-dark"><FaGithub></FaGithub> Github</Button>
             </div>
             <Form.Label>If you hav'nt account!<Link to='/register'>Register</Link></Form.Label>
