@@ -43,7 +43,7 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Link className='me-lg-3 text-decoration-none text-light' to='/courses'>Courses</Link>
-                            <Link className='me-lg-3 text-decoration-none text-light' to='/courses'>FAQ</Link>
+                            <Link className='me-lg-3 text-decoration-none text-light' to='/faq'>FAQ</Link>
                             <Link className='me-lg-3 text-decoration-none text-light' to='/blog'>Blog</Link>
                             {
                                 mood ?
@@ -55,14 +55,14 @@ const Header = () => {
                             <>
                                 {
                                     user?.uid &&
-                                    <Nav.Link className='p-lg-0' eventKey={2} href="#memes">
-                                        {user?.photoURL ?
-                                            <Tippy content={user.displayName}>
+                                    <Tippy content={user.displayName}>
+                                        <Nav.Link className='p-lg-0' eventKey={2} href="#memes">
+                                            {user?.photoURL ?
                                                 <Image className='me-lg-3' roundedCircle style={{ height: '40px' }} src={user?.photoURL}></Image>
-                                            </Tippy>
-                                            : <FaUser className='me-lg-3'></FaUser>
-                                        }
-                                    </Nav.Link>
+                                                : <FaUser className='me-lg-3'></FaUser>
+                                            }
+                                        </Nav.Link>
+                                    </Tippy>
                                 }
                             </>
                             {

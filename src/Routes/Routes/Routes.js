@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../../components/Blog/Blog";
 import Checkout from "../../components/Checkout/Checkout";
 import CourseDetails from "../../components/CourseDetails/CourseDetails";
 import Courses from "../../components/Courses/Courses";
+import Faq from "../../components/Faq/Faq";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
@@ -23,6 +25,14 @@ export const routes = createBrowserRouter([
                 loader: () => fetch('https://grow-your-skill-server.vercel.app/courses')
             },
             {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
+            },
+            {
                 path: '/courses/:id',
                 element: <CourseDetails></CourseDetails>,
                 loader: ({ params }) => fetch(`https://grow-your-skill-server.vercel.app/courses/${params.id}`)
@@ -39,6 +49,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '*',
+                element: <div><h3>Sorry!!! No Data Found Here 404 page</h3></div>
             },
         ]
     }

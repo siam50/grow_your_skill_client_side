@@ -23,7 +23,7 @@ const Home = () => {
                                 />
                                 <Carousel.Caption>
                                     <h3>Reaserch Mathodology</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    <p>Improve your market research with tips from our eBook.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
@@ -35,12 +35,12 @@ const Home = () => {
 
                                 <Carousel.Caption>
                                     <h3>Graphic Design</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Designers are meant to be loved, not to be understood.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>
                     </Col>
-                    <Col lg='6'>
+                    <Col className='mt-4 mt-lg-0' lg='6'>
                         <Card>
                             <Card.Header className='text-decoration-none text-warning' as="h5">
                                 <img
@@ -48,7 +48,7 @@ const Home = () => {
                                     src={logo}
                                     width="30"
                                     height="30"
-                                    className="d-inline-block align-top"
+                                    className="d-inline-block align-top me-2"
                                 />
                                 Grow Your Skill
                             </Card.Header>
