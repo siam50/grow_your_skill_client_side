@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
+    const [errors, setErrors] = useState('');
     const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -29,9 +30,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                form.reset();
+                setErrors('');
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setErrors(error.message);
+            })
     };
 
     const handleGoogle = () => {
@@ -71,6 +77,7 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            <Form.Label className='text-danger'>{errors}</Form.Label>
             <div className='my-3'>
                 <Button onClick={handleGoogle} className='me-3' variant="outline-dark"><FaGoogle></FaGoogle> Google</Button>
                 <Button onClick={handleGithub} variant="outline-dark"><FaGithub></FaGithub> Github</Button>
