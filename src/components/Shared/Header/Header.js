@@ -52,14 +52,19 @@ const Header = () => {
                             }
                         </Nav>
                         <Nav>
-                            <Nav.Link className='p-lg-0' eventKey={2} href="#memes">
-                                {user?.photoURL ?
-                                    <Tippy content={user.displayName}>
-                                        <Image className='me-lg-3' roundedCircle style={{ height: '40px' }} src={user?.photoURL}></Image>
-                                    </Tippy>
-                                    : <FaUser></FaUser>
+                            <>
+                                {
+                                    user?.uid &&
+                                    <Nav.Link className='p-lg-0' eventKey={2} href="#memes">
+                                        {user?.photoURL ?
+                                            <Tippy content={user.displayName}>
+                                                <Image className='me-lg-3' roundedCircle style={{ height: '40px' }} src={user?.photoURL}></Image>
+                                            </Tippy>
+                                            : <FaUser className='me-lg-3'></FaUser>
+                                        }
+                                    </Nav.Link>
                                 }
-                            </Nav.Link>
+                            </>
                             {
                                 user?.uid ?
                                     <Button onClick={handleLogOut} variant="light">Logout</Button>
