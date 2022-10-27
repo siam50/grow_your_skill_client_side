@@ -27,7 +27,7 @@ const Header = () => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
+                <Container className=''>
                     <Navbar.Brand>
                         <img
                             alt=""
@@ -41,7 +41,7 @@ const Header = () => {
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto align-items-center">
                             <Link className='me-lg-3 text-decoration-none text-light' to='/courses'>Courses</Link>
                             <Link className='me-lg-3 text-decoration-none text-light' to='/faq'>FAQ</Link>
                             <Link className='me-lg-3 text-decoration-none text-light' to='/blog'>Blog</Link>

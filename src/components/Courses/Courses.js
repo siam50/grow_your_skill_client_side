@@ -9,7 +9,6 @@ const Courses = () => {
 
     const { user } = useContext(AuthContext);
     const courses = useLoaderData();
-    console.log(courses)
     const { id, image, title, description } = courses;
 
     return (
@@ -38,7 +37,7 @@ const Courses = () => {
                     <Col lg='3'>
                         <h4>Course List</h4>
                         {
-                            courses.map(course => <ListGroup className='mb-2' key={course.id}><ListGroup.Item><Link to={`/courses/${course.id}`}>{course.title}</Link></ListGroup.Item></ListGroup>)
+                            courses.map(course => <ListGroup className='mb-2' key={course.id}><ListGroup.Item><Link className='text-decoration-none' to={`/courses/${course.id}`}>{course.title}</Link></ListGroup.Item></ListGroup>)
                         }
                     </Col>
                 </Row>

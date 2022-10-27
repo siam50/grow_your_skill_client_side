@@ -6,6 +6,7 @@ import Courses from "../../components/Courses/Courses";
 import Faq from "../../components/Faq/Faq";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
+import NoFound from "../../components/NoFound/NoFound";
 import Register from "../../components/Register/Register";
 import Main from "../../layouts/Main";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -52,7 +53,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '*',
-                element: <div><h3>Sorry!!! No Data Found Here 404 page</h3></div>
+                element: <NoFound></NoFound>
             },
         ]
     }

@@ -82,7 +82,7 @@ const Login = () => {
                 <Button onClick={handleGoogle} className='me-3' variant="outline-dark"><FaGoogle></FaGoogle> Google</Button>
                 <Button onClick={handleGithub} variant="outline-dark"><FaGithub></FaGithub> Github</Button>
             </div>
-            <Form.Label>If you hav'nt account!<Link to='/register'>Register</Link></Form.Label>
+            <Form.Label>If you hav'nt account! <Link to='/register'>Register</Link></Form.Label>
         </Container>
     );
 };
